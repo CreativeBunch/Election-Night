@@ -76,6 +76,17 @@ class App < Sinatra::Base
     end
   end
 
+  delete "/candidates/:id" do
+    candidate = Candidate.find_by(id: params["id"])
+    if candidate
+      candidate.destroy
+      candidate.to_json
+    else
+      status(404)
+      {message: "Candidate with id: #{params["id"]} not found!"}.to_json
+    end
+  end
+
 
 # If this file is run directly boot the webserver
 run! if app_file == $PROGRAM_NAME

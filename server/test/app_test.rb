@@ -65,5 +65,20 @@ class AppTest < Minitest::Test
     assert_equal 4, candidate["intelligence"]
   end
 
+  def test_delete_candidate_with_id
+    judy = Candidate.create!(
+            name: 'Judy',
+            image_url: 'www.judy.com',
+            intelligence: 3,
+            charisma: 4,
+            willpower: 3)
+
+    response = delete "/candidates/#{judy.id}"
+    assert response.ok?
+
+    employee =  JSON.parse(response.body)
+    assert_equal judy.name, employee["name"]
+    refute Candidate.find_by(id: judy.id)
+  end
 
 end
