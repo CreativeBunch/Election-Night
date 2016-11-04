@@ -12,9 +12,12 @@
             }
           .done(function handleCandidate(data) {
               console.log("it worked!");
+              console.log(data);
           })
           .fail(function handleCandidateError(xhr) {
-              
+              if (httpRequest.status > 399) {
+                  console.log('')
+              }
           })
         });
     }
