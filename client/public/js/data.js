@@ -1,5 +1,5 @@
 (function() {
-  'use strict';
-  window.electionNight = window.electionNight || {};
+    'use strict';
+    window.electionNight = window.electionNight || {};
 
 })();
