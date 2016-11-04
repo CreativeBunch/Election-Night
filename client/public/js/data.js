@@ -15,8 +15,12 @@
               console.log(data);
           })
           .fail(function handleCandidateError(xhr) {
-              if (httpRequest.status > 399) {
-                  console.log('')
+              if (xhr > 400 || xhr < 499) {
+                  console.log('Oh no! Client error. please check your data and re-submit.');
+              }
+
+              if (xhr > 500 || xhr <599) {
+                  console.log('Oh no! Server error! We need to make sure our server is working as it should');
               }
           })
         });
