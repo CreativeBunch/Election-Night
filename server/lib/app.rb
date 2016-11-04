@@ -31,6 +31,39 @@ class App < Sinatra::Base
     { msg: 'The server is running' }.to_json
   end
 
-  # If this file is run directly boot the webserver
-  run! if app_file == $PROGRAM_NAME
+  post "/candidates" do
+    candidate_info = JSON.parse(request.body.read)
+    candidate = Candidate.new(candidate_info)
+
+    if candidate.save
+      status 201
+      candidate.to_json
+    else
+      status 422
+      {
+        errors: {
+          full_messages: candidate.errors.full_messages,
+          messages: candidate.errors.messages
+        }
+      }.to_json
+    end
+  end
+
+  get "/candidates" do
+    content_type("application/json")
+    Candidate.all.to_json
+  end
+
+  get "/candidate/:id" do
+    candidate = Candidate.find_by(id: params["id"])
+    if candidate
+      candidate.to_json
+    else
+      status(404)
+      {message: "Candidate with id: #{params["id"]} not found!"}.to_json
+    end
+  end
+
+# If this file is run directly boot the webserver
+run! if app_file == $PROGRAM_NAME
 end
