@@ -2,5 +2,5 @@
     'use strict';
     window.electionNight = window.electionNight || {};
 
-
+    
 })();
