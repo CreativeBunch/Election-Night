@@ -8,9 +8,14 @@
             dataType: 'json',
             method: 'POST'
             headers: {
-
+              'Content-Type': 'application/json'
             }
-            
+          .done(function handleCandidate(data) {
+              console.log("it worked!");
+          })
+          .fail(function handleCandidateError(xhr) {
+              
+          })
         });
     }
 
