@@ -54,7 +54,7 @@ class App < Sinatra::Base
     Candidate.all.to_json
   end
 
-  get "/candidate/:id" do
+  get "/candidates/:id" do
     candidate = Candidate.find_by(id: params["id"])
     if candidate
       candidate.to_json
@@ -63,6 +63,19 @@ class App < Sinatra::Base
       {message: "Candidate with id: #{params["id"]} not found!"}.to_json
     end
   end
+
+  patch "/candidates/:id" do
+    candidate = Candidate.find_by(id: params["id"])
+    if candidate
+      candidate_data = JSON.parse(request.body.read)
+      candidate.update(candidate_data)
+      candidate.to_json
+    else
+      status(404)
+      {message: "Candidate with id: #{params["id"]} not found!"}.to_json
+    end
+  end
+
 
 # If this file is run directly boot the webserver
 run! if app_file == $PROGRAM_NAME
