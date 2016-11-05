@@ -4,7 +4,7 @@
 
     function createCandidate (candidate) {
         var candidateInfo = {};
-        var candidateName = candidate.name;
+        var candidateName = $();
         var avatar = candidate.image_url;
         var willPower = candidate.willpower;
         var charisma = candidate.charisma;
