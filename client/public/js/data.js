@@ -71,6 +71,12 @@
     }//end of function for getCandidates
 
     window.electionNight.editCandidate = function editCandidate(candidate) {
-
+      $.ajax({
+          url: '/candidates',
+          method: 'PATCH',
+          dataType: 'json',
+          headers: {
+              'Content-Type': 'application/json'
+          }//end of header for editCandidate
     }
 })();
