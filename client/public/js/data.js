@@ -4,8 +4,8 @@
 
 
     var candidateInfo = {};
-    var candidateName = name.val();
-    var avatar = image_url.val();
+    var candidateName = $('name').val();
+    var avatar = $('image_url').val();
     var willPower = willpower.val();
     var charisma = charisma.val();
     var intelligence = intelligence.val();
@@ -78,5 +78,6 @@
           headers: {
               'Content-Type': 'application/json'
           }//end of header for editCandidate
-    }
+    })
+  }
 })();
