@@ -4,7 +4,6 @@
         <meta charset='utf-8'>
         <title>Campaign 2020</title>
 
-        <!-- <link href='css/main.css' rel='stylesheet' type='text/css'> -->
     </head>
     <body>
 
@@ -23,28 +22,30 @@
             <section>4</section>
             <section>5</section>
 
-
-
-
         </fieldset>
+=======
+        <form method='POST' action='' enctype='multipart/form-data'>
 
         <nav>
             <ul>
-                <li><a class='show-???-list' href='#'>Show List of [WHAT?]</a></li>
+                <li><a class='List-Candidates' href='#'>List Candidates</a></li>
+                <li><a class='Create-Candidates' href='#'>Create Candidates</a></li>
+                <li><a class='Create-Campaign' href='#'>Create Campaign</a></li>
+                <li><a class='Previous Campaign' href='#'>Previous Campaign</a></li>
                 <!-- what other nav do we need? -->
                 <!-- how can we make a specific section below visible? HINT: look at the _nav.scss file! -->
             </ul>
         </nav>
 
         <main>
-            <section class='list-of-???'>
-                <h2>List of [WHAT?]</h2>
+            <section class='candidates'>
+                <h2>List of Candidates</h2>
                 <ul></ul>
             </section>
 
             <!-- what other sections do we need? -->
 
-            <section class='create-a-???'>
+            <section class='Create-Candidate'>
                 <h2>Create a New [WHAT?]</h2>
                 <form>
                     <aside>
@@ -52,13 +53,48 @@
                         <input type='text' id='name' name='name' required>
                     </aside>
 
-                    <!-- What else do we need? -->
+                    <aside>
+                        <label for='avatar'>Avatar</label>
+                        <input type='text' id='image_url' name='image' required>
+                    </aside>
 
                     <aside>
-                        <input type='submit' value='Create [WHAT?]'>
+                        <label for='intelligence'>Intelligence</label>
+                        <input type='number' id='number' name='number' required>
                     </aside>
+
+                    <aside>
+                        <label for='charisma'>Charisma</label>
+                        <input type='number' id='number' name='number' required>
+                    </aside>
+
+                    <aside>
+                        <label for='willpower'>Willpower</label>
+                        <input type='number' id='number' name='number' required>
+                    </aside>
+
+                    <aside>
+                        <input type='submit' value='Create Candidate'>
+                    </aside>
+
                 </form>
+
+            <section class='Create-Campaign'>
+                <input type='submit' value='Run Campaign'>
             </section>
+
+            <section class='Winner'>
+                <h2>We Have A Winner!</h2>
+                <p>Your 2020 Election President is...</p>
+            </section>
+
+            <section class='See-Old-Campaigns'>
+
+            </section>
+
+
+
+
 
         </main>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
