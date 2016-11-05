@@ -2,14 +2,18 @@
     'use strict';
     window.electionNight = window.electionNight || {};
 
-    var candidateId;
-    var candidateName;
-    var candidateA;
-    var candidateB;
-    var start;
-    var willpower;
-    var charisma;
-    var intelligence;
+
+    function createCandidate (candidate) {
+        var candidateId;
+        var candidateName;
+        var candidateA;
+        var candidateB;
+        var start;
+        var willpower;
+        var charisma;
+        var intelligence;
+    }
+
 
     window.electionNight.newCandidate = function newCandidate (name, image_url,intelligence, charisma, willpower) {
         $.ajax({
