@@ -3,9 +3,9 @@
     window.electionNight = window.electionNight || {};
 
     function createCandidate (candidate) {
+        var candidateInfo = {};
         var candidateName = candidate.name;
         var avatar = candidate.image_url;
-        var start = new Date();
         var willPower = candidate.willpower;
         var charisma = candidate.charisma;
         var intelligence = candidate.intelligence;
@@ -15,12 +15,13 @@
         $.ajax({
             url: '/candidates',
             dataType: 'json',
-            method: 'POST'
+            method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             }//end of headers for POST ajax call
           .done(function handleCandidate(data) {
               event.preventDefault()
+
               console.log("it worked!");
               console.log(data);
           })//end done click hanlder
@@ -32,6 +33,17 @@
               if (errorType > 500 || errorType <599) {
                   console.log('Oh no! Server error! We need to make sure our server is working as it should');
               }//end of how to handle server error for newCandidate
+              console.log("it worked!");
+              console.log(data);
+          })//end done click hanlder
+          .fail(function handleCandidateError(xhr) {
+              if (xhr > 400 || xhr < 499) {
+                  console.log('Oh no! Client error. please check your data and re-submit.');
+              }
+
+              if (xhr > 500 || xhr <599) {
+                  console.log('Oh no! Server error! We need to make sure our server is working as it should');
+              }
           })//ends fail event handler
         });//end of ajax call for GET /candidates
     }//ends new candidate function
@@ -39,7 +51,7 @@
     window.electionNight.getCandidates = function getCandidates (data) {
         $.ajax({
             url: '/candidates',
-            dataType: 'json'
+            dataType: 'json',
             headers: {
                 'Content-Type': 'application/json'
             }//end of header for getCandidates
