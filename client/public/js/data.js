@@ -3,9 +3,8 @@
     window.electionNight = window.electionNight || {};
 
     function createCandidate (candidate) {
-        var candidateName = candidate.name;
+        var candidateName = name;
         var avatar = candidate.image_url;
-        var start = new Date();
         var willPower = candidate.willpower;
         var charisma = candidate.charisma;
         var intelligence = candidate.intelligence;
@@ -15,7 +14,7 @@
         $.ajax({
             url: '/candidates',
             dataType: 'json',
-            method: 'POST'
+            method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             }//end of headers for POST ajax call
@@ -50,7 +49,7 @@
     window.electionNight.getCandidates = function getCandidates (data) {
         $.ajax({
             url: '/candidates',
-            dataType: 'json'
+            dataType: 'json',
             headers: {
                 'Content-Type': 'application/json'
             }//end of header for getCandidates
