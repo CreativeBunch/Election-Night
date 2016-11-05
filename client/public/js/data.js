@@ -2,6 +2,15 @@
     'use strict';
     window.electionNight = window.electionNight || {};
 
+    var candidateId;
+    var candidateName;
+    var candidateA;
+    var candidateB;
+    var start;
+    var willpower;
+    var charisma;
+    var intelligence;
+
     window.electionNight.newCandidate = function newCandidate (name, image_url,intelligence, charisma, willpower) {
         $.ajax({
             url: '/candidates',
@@ -46,7 +55,7 @@
 
             if (errorType > 500 || errorType <599) {
                 console.log('Oh no! Server error! We need to make sure our server is working as it should');
-            }//end of 
+            }//end of
         })
     }//end of function for getCandidates
 
