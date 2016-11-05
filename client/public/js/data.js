@@ -71,4 +71,7 @@
         })//end of fail callback for getCandidate
     }//end of function for getCandidates
 
+    window.electionNight.editCandidate = function editCandidate(candidate) {
+
+    }
 })();
