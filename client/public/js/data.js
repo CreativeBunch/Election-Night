@@ -11,7 +11,6 @@
         var intelligence = candidate.intelligence;
     }
 
-
     window.electionNight.newCandidate = function newCandidate (name, image_url,intelligence, charisma, willpower) {
         $.ajax({
             url: '/candidates',
@@ -28,11 +27,11 @@
           .fail(function handleCandidateError(xhr, errorType) {
               if (errorType > 400 || errorType < 499) {
                   console.log('Oh no! Client error. please check your data and re-submit.');
-              }
+              }//end of how to handle CLIENT error for newCandidate
 
               if (errorType > 500 || errorType <599) {
                   console.log('Oh no! Server error! We need to make sure our server is working as it should');
-              }
+              }//end of how to handle server error for newCandidate
           })//ends fail event handler
         });//end of ajax call for GET /candidates
     }//ends new candidate function
@@ -52,12 +51,12 @@
             console.log("ERROR");
             if (errorType > 400 || errorType < 499) {
                 console.log('Oh no! Client error. please check your data and re-submit.');
-            }
+            }//end of how to handle client error for getCandidate
 
             if (errorType > 500 || errorType <599) {
                 console.log('Oh no! Server error! We need to make sure our server is working as it should');
-            }//end of
-        })
+            }//end of how to handle server errors for getCandidate
+        })//end of fail callback for getCandidate
     }//end of function for getCandidates
 
 })();
