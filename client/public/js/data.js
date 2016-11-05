@@ -5,7 +5,7 @@
     function createCandidate (candidate) {
         var candidateName = name;
         var candidateInfo = {};
-        var candidateName = candidate.name;
+        var candidateName = $();
         var avatar = candidate.image_url;
         var willPower = candidate.willpower;
         var charisma = candidate.charisma;
@@ -72,4 +72,7 @@
         })//end of fail callback for getCandidate
     }//end of function for getCandidates
 
+    window.electionNight.editCandidate = function editCandidate(candidate) {
+
+    }
 })();
