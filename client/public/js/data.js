@@ -78,5 +78,20 @@
           headers: {
               'Content-Type': 'application/json'
           }//end of header for editCandidate
-    }
+        }//end of ajax call for editCandidate
+        .done(function handleEditCandidate(data) {
+            console.log("Call successful");
+        })//end of ajax call for getCandidates
+        .fail(function handleEditCandidateError(xhr, errorType) {
+            console.log("ERROR");
+            if (errorType > 400 || errorType < 499) {
+                console.log('Oh no! Client error. please check your data and re-submit.');
+            }//end of how to handle client error for getCandidate
+
+            if (errorType > 500 || errorType <599) {
+                console.log('Oh no! Server error! We need to make sure our server is working as it should');
+            }//end of how to handle server errors for getCandidate
+        })//end of fail callback for getCandidate
+    }//end of function for getCandidates
+
 })();
