@@ -3,7 +3,12 @@
     window.electionNight = window.electionNight || {};
 
     function createCandidate (candidate) {
+<<<<<<< HEAD
         var candidateName = name;
+=======
+        var candidateInfo = {};
+        var candidateName = candidate.name;
+>>>>>>> jd-get-candidates
         var avatar = candidate.image_url;
         var willPower = candidate.willpower;
         var charisma = candidate.charisma;
@@ -20,6 +25,7 @@
             }//end of headers for POST ajax call
           .done(function handleCandidate(data) {
               event.preventDefault()
+
               console.log("it worked!");
               console.log(data);
           })//end done click hanlder
