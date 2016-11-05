@@ -3,12 +3,9 @@
     window.electionNight = window.electionNight || {};
 
     function createCandidate (candidate) {
-<<<<<<< HEAD
         var candidateName = name;
-=======
         var candidateInfo = {};
         var candidateName = candidate.name;
->>>>>>> jd-get-candidates
         var avatar = candidate.image_url;
         var willPower = candidate.willpower;
         var charisma = candidate.charisma;
