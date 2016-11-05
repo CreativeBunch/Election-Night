@@ -2,16 +2,13 @@
     'use strict';
     window.electionNight = window.electionNight || {};
 
-
     function createCandidate (candidate) {
-        var candidateId;
-        var candidateName;
-        var candidateA;
-        var candidateB;
-        var start;
-        var willpower;
-        var charisma;
-        var intelligence;
+        var candidateName = candidate.name;
+        var avatar = candidate.image_url;
+        var start = new Date();
+        var willPower = candidate.willpower;
+        var charisma = candidate.charisma;
+        var intelligence = candidate.intelligence;
     }
 
 
