@@ -138,4 +138,8 @@
             }//end of how to handle server errors for deleteCandidate
           })//end of fail callback for deleteCandidate
     }//end of function for addCampaign
+
+    window.electionNight.deleteCampaign = function deleteCampaign() {
+      
+    }
 })();
