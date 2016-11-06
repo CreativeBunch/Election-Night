@@ -125,10 +125,34 @@
                 'Content-Type': 'application/json'
             }
         })//end of ajax cal
-        .done (function postEditCandidateSuccess (data) {
+        .done (function handleAddCampaignSuccess (data) {
             console.log("Success!")
         })//end of done callback function for addCampaign
-        .fail (function handleEditCandidateError(xhr, errorType){
+        .fail (function handleAddCampaignError(xhr, errorType){
+            if (errorType > 400 || errorType < 499) {
+              console.log('Oh no! Client error. please check your data and re-submit.');
+            }//end of how to handle client error for addCampaign
+
+            if (errorType > 500 || errorType <599) {
+              console.log('Oh no! Server error! We need to make sure our server is working as it should');
+            }//end of how to handle server errors for addCampaign
+          })//end of fail callback for addCampaign
+    }//end of function for addCampaign
+
+    window.electionNight.deleteCampaign = function deleteCampaign() {
+        $.ajax({
+            url: '/campaign',
+            method: 'DELETE',
+            dataType: 'json',
+            headers: {
+                'Content-Type': 'application/json'
+            }//end of headers for deleteCampaign
+        })//end of ajax call
+
+        .done (function deleteCampaignSuccess(data){
+            console.log('Campaign deleted!');
+        })
+        .fail (function deleteCampaignError(xhr) {
             if (errorType > 400 || errorType < 499) {
               console.log('Oh no! Client error. please check your data and re-submit.');
             }//end of how to handle client error for deleteCandidate
@@ -136,10 +160,6 @@
             if (errorType > 500 || errorType <599) {
               console.log('Oh no! Server error! We need to make sure our server is working as it should');
             }//end of how to handle server errors for deleteCandidate
-          })//end of fail callback for deleteCandidate
-    }//end of function for addCampaign
-
-    window.electionNight.deleteCampaign = function deleteCampaign() {
-      
+        })
     }
 })();
