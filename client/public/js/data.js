@@ -115,4 +115,15 @@
           }//end of how to handle server errors for deleteCandidate
         })//end of fail callback for deleteCandidate
       }//end of function for deleteCandidate
+
+    window.electionNight.addCampaign = function addCampaign() {
+        $.ajax({
+            url: '/campaign',
+            method: 'POST',
+            dataType: 'json',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    }//end of function for addCampaign
 })();
