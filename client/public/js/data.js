@@ -78,6 +78,9 @@
           headers: {
               'Content-Type': 'application/json'
           }//end of header for editCandidate
-    })
+        .done (function postEditCandidateSuccess (data) {
+
+        })//end of done callback function for editCandidate
+    })//end of ajax call for editCandidate
   }
 })();
