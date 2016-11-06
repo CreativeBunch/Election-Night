@@ -16,3 +16,4 @@ require "rack/test"
 
 require_relative "../lib/app"
 require_relative '../lib/candidate'
+require_relative '../lib/campaign'

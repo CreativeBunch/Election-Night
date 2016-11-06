@@ -33,7 +33,8 @@ class AppTest < Minitest::Test
   end
 
   def test_can_read_single_candidate
-    get "/candidates/#{Candidate.last.id}"
+    candidate_a = Candidate.create!(name: "Judy", intelligence: 3, charisma: 4, willpower: 3)
+    get "/candidates/#{candidate_a.id}"
     assert last_response.ok?
     assert_equal "Judy", JSON.parse(last_response.body)["name"]
   end
@@ -79,6 +80,40 @@ class AppTest < Minitest::Test
     employee =  JSON.parse(response.body)
     assert_equal judy.name, employee["name"]
     refute Candidate.find_by(id: judy.id)
+  end
+
+  def test_can_create_a_campaign
+    candidate_a = Candidate.create!(name: "Judy", intelligence: 3, charisma: 4, willpower: 3)
+    candidate_b = Candidate.create!(name: "John", intelligence: 1, charisma: 6, willpower: 3)
+    payload = {
+      name: 'MD Senate 2016',
+      candidate_a_id: candidate_a.id,
+      candidate_b_id: candidate_b.id
+    }
+
+    post "/campaigns", payload.to_json
+    assert_equal 201, last_response.status
+    assert_equal Campaign.last.id, JSON.parse(last_response.body)["id"]
+  end
+
+  def test_can_read_all_campaigns
+    get "/campaigns"
+    assert last_response.ok?
+    campaigns = JSON.parse(last_response.body)
+    assert_equal 'MD Senate 2016', campaigns.first["name"]
+  end
+
+  def test_can_get_campaigns_for_candidate_with_id
+    peter =  Candidate.create!(name: "peter", intelligence: 3, charisma: 4, willpower: 3)
+    pamela = Candidate.create!(name: "pamela", intelligence: 2, charisma: 5, willpower: 3)
+    angela = Candidate.create!(name: "angela", intelligence: 3, charisma: 3, willpower: 4)
+    adolph = Candidate.create!(name: "Adolph", intelligence: 1, charisma: 6, willpower: 3)
+    Campaign.create!(name: "MD Senate 2016", candidate_a_id: peter, candidate_b_id: pamela, winner_candidate_id: pamela)
+    Campaign.create!(name: "NY Dem Primary 2016", candidate_a_id: pamela, candidate_b_id: angela, winner_candidate_id: angela)
+    Campaign.create!(name: "VA Senate 2016", candidate_a_id: pamela, candidate_b_id: adolph, winner_candidate_id: pamela)
+    get "/candidates/135/campaign"
+    campaigns = JSON.parse(last_response.body)
+    assert_equal 3, campaigns.count
   end
 
 end
