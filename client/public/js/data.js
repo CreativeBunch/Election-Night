@@ -89,7 +89,11 @@
           if (errorType > 500 || errorType <599) {
               console.log('Oh no! Server error! We need to make sure our server is working as it should');
           }//end of how to handle server errors for editCandidate
-        })
+        })//end of fail callback for edit candidate
     })//end of ajax call for editCandidate
+  }//end of editCandidate function
+
+  window.electionNight.deleteCandidate = function deleteCandidate (candidate) {
+      
   }
 })();
