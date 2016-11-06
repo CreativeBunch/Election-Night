@@ -101,7 +101,18 @@
           headers: {
               'Content-Type': 'application/json'
           }
-        
-      })
-  }
+        })
+      .done (function postEditCandidateSuccess (data) {
+          console.log("Success!")
+      })//end of done callback function for deleteCandidate
+      .fail (function handleEditCandidateError(xhr, errorType){
+          if (errorType > 400 || errorType < 499) {
+            console.log('Oh no! Client error. please check your data and re-submit.');
+          }//end of how to handle client error for deleteCandidate
+
+          if (errorType > 500 || errorType <599) {
+            console.log('Oh no! Server error! We need to make sure our server is working as it should');
+          }//end of how to handle server errors for deleteCandidate
+        })//end of fail callback for deleteCandidate
+      }//end of function for deleteCandidate
 })();
