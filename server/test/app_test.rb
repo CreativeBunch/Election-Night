@@ -103,15 +103,15 @@ class AppTest < Minitest::Test
     assert_equal 'MD Senate 2016', campaigns.first["name"]
   end
 
-  def test_can_get_campaigns_for_candidate_with_id
+  def test_can_get_campaigns_for_candidate_with_given_id
     peter =  Candidate.create!(name: "peter", intelligence: 3, charisma: 4, willpower: 3)
     pamela = Candidate.create!(name: "pamela", intelligence: 2, charisma: 5, willpower: 3)
     angela = Candidate.create!(name: "angela", intelligence: 3, charisma: 3, willpower: 4)
     adolph = Candidate.create!(name: "Adolph", intelligence: 1, charisma: 6, willpower: 3)
-    Campaign.create!(name: "MD Senate 2016", candidate_a_id: peter, candidate_b_id: pamela, winner_candidate_id: pamela)
-    Campaign.create!(name: "NY Dem Primary 2016", candidate_a_id: pamela, candidate_b_id: angela, winner_candidate_id: angela)
-    Campaign.create!(name: "VA Senate 2016", candidate_a_id: pamela, candidate_b_id: adolph, winner_candidate_id: pamela)
-    get "/candidates/135/campaign"
+    Campaign.create!(name: "MD Senate 2016", candidate_a: peter, candidate_b: pamela, winner_candidate: pamela)
+    Campaign.create!(name: "NY Dem Primary 2016", candidate_a: pamela, candidate_b: angela, winner_candidate: angela)
+    Campaign.create!(name: "VA Senate 2016", candidate_a: pamela, candidate_b: adolph, winner_candidate: pamela)
+    get "/candidates/#{pamela.id}/campaign"
     campaigns = JSON.parse(last_response.body)
     assert_equal 3, campaigns.count
   end
