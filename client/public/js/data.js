@@ -79,8 +79,17 @@
               'Content-Type': 'application/json'
           }//end of header for editCandidate
         .done (function postEditCandidateSuccess (data) {
-
+            console.log("Success!")
         })//end of done callback function for editCandidate
+        .fail (function handleEditCandidateError(xhr, errorType){
+          if (errorType > 400 || errorType < 499) {
+              console.log('Oh no! Client error. please check your data and re-submit.');
+          }//end of how to handle client error for editCandidate
+
+          if (errorType > 500 || errorType <599) {
+              console.log('Oh no! Server error! We need to make sure our server is working as it should');
+          }//end of how to handle server errors for editCandidate
+        })
     })//end of ajax call for editCandidate
   }
 })();
