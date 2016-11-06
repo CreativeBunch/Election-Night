@@ -87,6 +87,55 @@ class App < Sinatra::Base
     end
   end
 
+  post "/campaigns" do
+    campaign_info = JSON.parse(request.body.read)
+    campaign_name = campaign_info["name"]
+    a_candidate = Candidate.find_by(id: campaign_info["candidate_a_id"])
+    b_candidate = Candidate.find_by(id: campaign_info["candidate_b_id"])
+    a_candidate_score = (a_candidate.intelligence * 2) +
+                        (a_candidate.willpower * 3) +
+                        (a_candidate.charisma)
+    b_candidate_score = (b_candidate.intelligence * 2) +
+                        (b_candidate.willpower * 3) +
+                        (b_candidate.charisma)
+    if a_candidate_score >= b_candidate_score
+      winning_candidate = a_candidate
+    else
+      winning_candidate = b_candidate
+    end
+
+    campaign = Campaign.new(
+                            name: campaign_name,
+                            candidate_a: a_candidate,
+                            candidate_b: b_candidate,
+                            winner_candidate: winning_candidate)
+    if campaign.save
+      status 201
+      campaign.to_json
+    else
+      status 422
+      {
+        errors: {
+          full_messages: campaign.errors.full_messages,
+          messages: campaign.errors.messages
+        }
+      }.to_json
+    end
+  end
+
+  get "/campaigns" do
+    content_type("application/json")
+    Campaign.all.to_json
+  end
+
+  get "/candidates/:id/campaign" do
+    candidate = Candidate.find_by(id: params["id"])
+    if !candidate
+      status(404)
+      return {message: "Candidate with id: #{params["id"]} not found!"}.to_json
+    end
+    (candidate.candidate_a + candidate.candidate_b).to_json
+  end
 
 # If this file is run directly boot the webserver
 run! if app_file == $PROGRAM_NAME
