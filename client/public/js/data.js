@@ -94,6 +94,14 @@
   }//end of editCandidate function
 
   window.electionNight.deleteCandidate = function deleteCandidate (candidate) {
-      
+      $.ajax({
+          url: '/candidates',
+          method: 'DELETE',
+          dataType: 'json',
+          headers: {
+              'Content-Type': 'application/json'
+          }
+        
+      })
   }
 })();
