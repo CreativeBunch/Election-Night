@@ -137,6 +137,17 @@ class App < Sinatra::Base
     (candidate.candidate_a + candidate.candidate_b).to_json
   end
 
+  delete "/campaigns/:id" do
+    campaign = Campaign.find_by(id: params["id"])
+    if campaign
+      campaign.destroy
+      campaign.to_json
+    else
+      status(404)
+      {message: "Campaign with id: #{params["id"]} not found!"}.to_json
+    end
+  end
+
 # If this file is run directly boot the webserver
 run! if app_file == $PROGRAM_NAME
 end
