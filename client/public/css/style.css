@@ -404,7 +404,8 @@ template {
   display: none; }
 
 body {
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Roboto', sans-serif;
+  color: #00FFFF; }
 
 section {
   display: none; }
