@@ -6,15 +6,19 @@
     var candidateInfo = {};
     var candidateName = $('name').val();
     var avatar = $('image_url').val();
-    var willPower = $('willpower').val();
-    var charisma = $('charisma').val();
-    var intelligence = $('intelligence').val();
+    var will = $('willpower').val();
+    var char = $('charisma').val();
+    var intel = $('intelligence').val();
 
     window.electionNight.newCandidate = function newCandidate (name, image_url,intelligence, charisma, willpower) {
         $.ajax({
             url: '/candidates',
             data: JSON.stringify({
-              
+              name: candidateName,
+              image_url: avatar,
+              willpower: will,
+              charisma: char,
+              intelligene: intel
             }),
             method: 'POST',
             headers: {
@@ -121,7 +125,9 @@
         $.ajax({
             url: '/campaign',
             method: 'POST',
-            dataType: 'json',
+            dataType: JSON.stringify({
+
+            }),
             headers: {
                 'Content-Type': 'application/json'
             }
