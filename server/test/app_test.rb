@@ -77,8 +77,8 @@ class AppTest < Minitest::Test
     response = delete "/candidates/#{judy.id}"
     assert response.ok?
 
-    employee =  JSON.parse(response.body)
-    assert_equal judy.name, employee["name"]
+    candidate_response =  JSON.parse(response.body)
+    assert_equal judy.name, candidate_response["name"]
     refute Candidate.find_by(id: judy.id)
   end
 
@@ -114,6 +114,19 @@ class AppTest < Minitest::Test
     get "/candidates/#{pamela.id}/campaign"
     campaigns = JSON.parse(last_response.body)
     assert_equal 3, campaigns.count
+  end
+
+  def test_delete_campaign_with_given_id
+    peter =  Candidate.create!(name: "peter", intelligence: 3, charisma: 4, willpower: 3)
+    pamela = Candidate.create!(name: "pamela", intelligence: 2, charisma: 5, willpower: 3)
+    senate_campaign = Campaign.create!(name: "VA Senate 2016", candidate_a: pamela, candidate_b: peter, winner_candidate: pamela)
+
+    response = delete "/campaigns/#{senate_campaign.id}"
+    assert response.ok?
+
+    campaign_response =  JSON.parse(response.body)
+    assert_equal senate_campaign.name, campaign_response["name"]
+    refute Campaign.find_by(id: senate_campaign.id)
   end
 
 end
