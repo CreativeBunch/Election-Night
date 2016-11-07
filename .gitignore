@@ -21,3 +21,6 @@
 /.bundle/
 /vendor/bundle
 /lib/bundler/man/
+
+.DS_Store
+.sass-cache
