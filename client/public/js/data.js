@@ -10,6 +10,9 @@
     var char = $('charisma').val();
     var intel = $('intelligence').val();
 
+    var candidateA;
+    var candidateB;
+
     window.electionNight.newCandidate = function newCandidate (name, image_url,intelligence, charisma, willpower) {
         $.ajax({
             url: '/candidates',
@@ -125,9 +128,7 @@
         $.ajax({
             url: '/campaign',
             method: 'POST',
-            dataType: JSON.stringify({
-
-            }),
+            dataType: 'json',
             headers: {
                 'Content-Type': 'application/json'
             }
