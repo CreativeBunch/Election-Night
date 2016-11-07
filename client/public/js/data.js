@@ -87,6 +87,7 @@
               'Content-Type': 'application/json'
           }//end of header for editCandidate
         .done (function postEditCandidateSuccess (data) {
+            event.preventDefault()
             console.log("Success!")
         })//end of done callback function for editCandidate
         .fail (function handleEditCandidateError(xhr, errorType){
@@ -111,6 +112,7 @@
           }
         })
       .done (function postEditCandidateSuccess (data) {
+          event.preventDefault()
           console.log("Success!")
       })//end of done callback function for deleteCandidate
       .fail (function handleEditCandidateError(xhr, errorType){
@@ -134,6 +136,7 @@
             }
         })//end of ajax cal
         .done (function handleAddCampaignSuccess (data) {
+            event.preventDefault()
             console.log("Success!")
         })//end of done callback function for addCampaign
         .fail (function handleAddCampaignError(xhr, errorType){
@@ -158,6 +161,7 @@
         })//end of ajax call
 
         .done (function deleteCampaignSuccess(data){
+            event.preventDefault()
             console.log('Campaign deleted!');
         })
         .fail (function deleteCampaignError(xhr) {
