@@ -1,0 +1,39 @@
+/*
+Error: Invalid CSS after "@import": expected file to import (string or url()), was ";"
+        on line 1 of client/scss/main.scss
+
+1: @import;
+
+Backtrace:
+client/scss/main.scss:1
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/lib/sass/scss/parser.rb:1189:in `expected'
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/lib/sass/scss/parser.rb:1125:in `expected'
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/lib/sass/scss/parser.rb:1105:in `expr!'
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/lib/sass/scss/parser.rb:371:in `block in import_directive'
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/lib/sass/scss/parser.rb:370:in `loop'
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/lib/sass/scss/parser.rb:370:in `import_directive'
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/lib/sass/scss/parser.rb:222:in `special_directive'
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/lib/sass/scss/parser.rb:197:in `directive'
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/lib/sass/scss/parser.rb:675:in `block_child'
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/lib/sass/scss/parser.rb:665:in `block_contents'
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/lib/sass/scss/parser.rb:125:in `stylesheet'
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/lib/sass/scss/parser.rb:41:in `parse'
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/lib/sass/engine.rb:406:in `_to_tree'
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/lib/sass/engine.rb:381:in `_render_with_sourcemap'
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/lib/sass/engine.rb:298:in `render_with_sourcemap'
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `each'
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:473:in `on_file_changed'
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:331:in `block in watch'
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/vendor/listen/lib/listen/listener.rb:252:in `on_change'
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/vendor/listen/lib/listen/listener.rb:290:in `block in initialize_adapter'
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/vendor/listen/lib/listen/adapter.rb:254:in `report_changes'
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/vendor/listen/lib/listen/adapter.rb:323:in `poll_changed_directories'
+/Users/jessica/.rvm/gems/ruby-2.3.1/gems/sass-3.4.22/vendor/listen/lib/listen/adapter.rb:299:in `block in start_poller'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"@import\": expected file to import (string or url()), was \";\"\A         on line 1 of client/scss/main.scss\A \A 1: @import;"; }
