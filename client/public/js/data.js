@@ -6,21 +6,29 @@
     var candidateInfo = {};
     var candidateName = $('name').val();
     var avatar = $('image_url').val();
-    var willPower = $('willpower').val();
-    var charisma = $('charisma').val();
-    var intelligence = $('intelligence').val();
+    var will = $('willpower').val();
+    var char = $('charisma').val();
+    var intel = $('intelligence').val();
+
+    var candidateA;
+    var candidateB;
 
     window.electionNight.newCandidate = function newCandidate (name, image_url,intelligence, charisma, willpower) {
         $.ajax({
             url: '/candidates',
-            dataType: 'json',
+            data: JSON.stringify({
+              name: candidateName,
+              image_url: avatar,
+              willpower: will,
+              charisma: char,
+              intelligene: intel
+            }),
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             }//end of headers for POST ajax call
           .done(function handleCandidate(data) {
               event.preventDefault()
-
               console.log("it worked!");
               console.log(data);
           })//end done click hanlder
@@ -49,7 +57,7 @@
 
     window.electionNight.getCandidates = function getCandidates (data) {
         $.ajax({
-            url: '/candidates',
+            url: '/candidates/:id/campaigns',
             dataType: 'json',
             headers: {
                 'Content-Type': 'application/json'
@@ -72,7 +80,7 @@
 
     window.electionNight.editCandidate = function editCandidate(candidate) {
       $.ajax({
-          url: '/candidates',
+          url: '/candidates/:id',
           method: 'PATCH',
           dataType: 'json',
           headers: {
@@ -95,7 +103,7 @@
 
   window.electionNight.deleteCandidate = function deleteCandidate (candidate) {
       $.ajax({
-          url: '/candidates/id',
+          url: '/candidates/:id',
           method: 'DELETE',
           dataType: 'json',
           headers: {
@@ -141,7 +149,7 @@
 
     window.electionNight.deleteCampaign = function deleteCampaign() {
         $.ajax({
-            url: '/campaign',
+            url: '/campaign/:id',
             method: 'DELETE',
             dataType: 'json',
             headers: {
